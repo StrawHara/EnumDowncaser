@@ -1,19 +1,19 @@
 #!/usr/bin/env ruby
 
 unless ARGV.count >= 2
-  puts "Usage: #{File.basename(__FILE__)} ProjectName EnumPrefix."
+  puts "Usage: #{File.basename(__FILE__)} DirectoryToParse/. EnumName."
   exit 1
 end
 
 require 'find'
 
-project_name = ARGV[0]
+project_directory = ARGV[0]
 prefix = ARGV[1]
 
 pathes = []
 # Find.find("/tmp") do |f|
 
-Find.find("#{project_name}") do |path|
+Find.find("#{project_directory}") do |path|
   pathes << path unless FileTest.directory?(path)
 end
 
